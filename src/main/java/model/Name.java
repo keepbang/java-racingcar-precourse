@@ -1,9 +1,11 @@
 package model;
 
-import static utils.ValidationUtils.validCarNameLength;
-import static view.ExceptionMessage.ERROR_VALID_NAME_TEXT;
+import exception.InvalidCarNameException;
 
 public class Name{
+    public static final int NAME_MAX_LENGTH = 5;
+    public static final int NAME_MIN_LENGTH = 0;
+
     private String name;
 
     public Name(String name){
@@ -13,8 +15,13 @@ public class Name{
 
     private void validName(String name) {
         if(!validCarNameLength(name)){
-            throw new IllegalArgumentException(ERROR_VALID_NAME_TEXT);
+            throw new InvalidCarNameException();
         }
+    }
+
+    private boolean validCarNameLength(String carName) {
+        return NAME_MIN_LENGTH < carName.length() &&
+                carName.length() <= NAME_MAX_LENGTH;
     }
 
     public String getName() {
