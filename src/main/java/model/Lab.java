@@ -27,4 +27,8 @@ public class Lab {
     public int getLabCount() {
         return labCount;
     }
+
+    public void finishOneLab(){
+        this.labCount--;
+    }
 }

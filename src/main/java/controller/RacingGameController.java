@@ -2,23 +2,38 @@ package controller;
 
 import exception.InvalidCarNameException;
 import model.Lab;
+import model.MoveStrategy;
 import model.RacingCars;
 import model.RacingGame;
+import impl.RandomMoveImpl;
 
 import static view.ConsoleView.*;
 
 public class RacingGameController {
 
     private final RacingGame racingGame;
+    private final MoveStrategy moveStrategy = RandomMoveImpl.getInstance();
 
-    public RacingGameController() {
+    private static class LazyHolder {
+        public static final RacingGameController INSTANCE = new RacingGameController();
+    }
+
+    public static RacingGameController getInstance() {
+        return LazyHolder.INSTANCE;
+    }
+
+    private RacingGameController() {
         racingGame = new RacingGame();
         inputCarNames();
         inputLab();
     }
 
     public void play(){
-        racingGame.play();
+        playResult();
+        while(racingGame.getLab().getLabCount() > 0){
+            racingGame.startCars(moveStrategy);
+            finishOneLabResult(racingGame);
+        }
     }
 
     private void inputCarNames() {

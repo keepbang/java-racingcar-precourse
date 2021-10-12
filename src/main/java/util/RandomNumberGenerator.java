@@ -1,4 +1,4 @@
-package nextstep.utils;
+package util;
 
 import static nextstep.utils.Randoms.pickNumberInRange;
 

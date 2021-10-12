@@ -1,6 +1,7 @@
-package nextstep.utils;
+package impl;
 
 import model.MoveStrategy;
+import util.RandomNumberGenerator;
 
 public class RandomMoveImpl implements MoveStrategy {
 
