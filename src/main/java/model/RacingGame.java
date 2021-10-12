@@ -9,12 +9,20 @@ public class RacingGame {
         this.racingCars = racingCars;
     }
 
-
     public void inputLab(Lab lab) {
         this.lab = lab;
     }
 
-    public void play() {
+    public Lab getLab() {
+        return this.lab;
+    }
 
+    public RacingCars getRacingCars() {
+        return racingCars;
+    }
+
+    public void startCars(MoveStrategy moveStrategy) {
+        racingCars.start(moveStrategy);
+        lab.finishOneLab();
     }
 }

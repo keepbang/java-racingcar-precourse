@@ -3,17 +3,17 @@ package model;
 public class Position {
     private int position;
 
-    private Position(){};
-
-    public Position(int position){
-        this.position = position;
+    public Position(){
+        this.position = 0;
     }
 
     public int getPosition() {
         return this.position;
     }
 
-    public Position addPosition(){
-        return new Position(this.position + 1);
+    public void move(boolean movable){
+        if(movable){
+            this.position++;
+        }
     }
 }
