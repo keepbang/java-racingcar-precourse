@@ -20,4 +20,8 @@ public class Car {
     public void move(boolean movable){
         position.move(movable);
     }
+
+    public boolean isWinner(int position){
+        return this.position.getPosition() == position;
+    }
 }

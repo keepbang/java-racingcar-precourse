@@ -37,6 +37,11 @@ public class RacingGameController {
         }
     }
 
+    public void getWinner(RacingGame racingGame){
+        String winnerString = racingGame.getRacingCars().getWinner();
+        printWinner(winnerString);
+    }
+
     private RacingCars inputCarNames() {
         try{
             RacingCars racingCars = new RacingCars(enterCarNames());

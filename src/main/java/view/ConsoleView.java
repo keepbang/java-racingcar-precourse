@@ -13,6 +13,7 @@ public class ConsoleView {
     private static final String INPUT_LAB_TEXT = "시도할 회수는 몇회인가요?";
     private static final String PLAY_RESULT = "실행 결과";
     private static final String DASH = "-";
+    private static final String FINAL_WINNER_TEXT = "최종 우승자는 %s 입니다.\n";
 
     public static String enterCarNames(){
         System.out.println(INPUT_CAR_TEXT);
@@ -47,6 +48,10 @@ public class ConsoleView {
             positionDash += DASH;
         }
         return positionDash;
+    }
+
+    public static void printWinner(String winnerString){
+        System.out.printf(FINAL_WINNER_TEXT,winnerString);
     }
 
     public static void printError(String errorMessage){

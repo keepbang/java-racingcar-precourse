@@ -8,6 +8,7 @@ public class RacingGameExecution {
         RacingGameController gameController = RacingGameController.getInstance();
         RacingGame racingGame = gameController.inputRacingGame();
         gameController.play(racingGame);
+        gameController.getWinner(racingGame);
     }
 
 
