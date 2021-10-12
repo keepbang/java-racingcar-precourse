@@ -11,7 +11,6 @@ import static view.ConsoleView.*;
 
 public class RacingGameController {
 
-    private final RacingGame racingGame;
     private final MoveStrategy moveStrategy = RandomMoveImpl.getInstance();
 
     private static class LazyHolder {
@@ -22,13 +21,15 @@ public class RacingGameController {
         return LazyHolder.INSTANCE;
     }
 
-    private RacingGameController() {
-        racingGame = new RacingGame();
-        inputCarNames();
-        inputLab();
+    private RacingGameController() {}
+
+    public RacingGame inputRacingGame(){
+        RacingCars racingCars = inputCarNames();
+        Lab lab = inputLab();
+        return new RacingGame(racingCars, lab);
     }
 
-    public void play(){
+    public void play(RacingGame racingGame){
         playResult();
         while(racingGame.getLab().getLabCount() > 0){
             racingGame.startCars(moveStrategy);
@@ -36,38 +37,24 @@ public class RacingGameController {
         }
     }
 
-    private void inputCarNames() {
-        boolean isValid = false;
-        while (!isValid) {
-            isValid = enrollRacingCars(enterCarNames());
+    private RacingCars inputCarNames() {
+        try{
+            RacingCars racingCars = new RacingCars(enterCarNames());
+            return racingCars;
+        }catch(InvalidCarNameException e){
+            printError(e.getMessage());
+            return inputCarNames();
         }
     }
 
-    private boolean enrollRacingCars(String inputCarNames) {
+    private Lab inputLab() {
         try {
-            racingGame.inputRacingCars(new RacingCars(inputCarNames));
-            return true;
+            Lab lab = new Lab(enterLab());
+            return lab;
         } catch (InvalidCarNameException e) {
             printError(e.getMessage());
+            return inputLab();
         }
-        return false;
-    }
-
-    private void inputLab() {
-        boolean isValid = false;
-        while (!isValid) {
-            isValid = enrollLab(enterLab());
-        }
-    }
-
-    private boolean enrollLab(String lab) {
-        try {
-            racingGame.inputLab(new Lab(lab));
-            return true;
-        } catch (InvalidCarNameException e) {
-            printError(e.getMessage());
-        }
-        return false;
     }
 
 }

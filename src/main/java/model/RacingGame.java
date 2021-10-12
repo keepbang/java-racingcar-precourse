@@ -5,11 +5,8 @@ public class RacingGame {
     private RacingCars racingCars;
     private Lab lab;
 
-    public void inputRacingCars(RacingCars racingCars) {
+    public RacingGame(RacingCars racingCars, Lab lab) {
         this.racingCars = racingCars;
-    }
-
-    public void inputLab(Lab lab) {
         this.lab = lab;
     }
 
