@@ -1,17 +1,16 @@
 package racinggame.controller;
 
-import racinggame.exception.InvalidCarNameException;
 import racinggame.model.Lab;
 import racinggame.model.MoveStrategy;
 import racinggame.model.RacingCars;
 import racinggame.model.RacingGame;
 import racinggame.impl.RandomMoveImpl;
-import racinggame.view.ConsoleView;
+
+import static racinggame.view.ConsoleView.*;
 
 public class RacingGameController {
 
     private final MoveStrategy moveStrategy;
-    private final ConsoleView view;
 
     private static class LazyHolder {
         public static final RacingGameController INSTANCE = new RacingGameController();
@@ -23,46 +22,20 @@ public class RacingGameController {
 
     private RacingGameController() {
         moveStrategy = RandomMoveImpl.getInstance();
-        view = new ConsoleView();
     }
 
-    public RacingGame inputRacingGame(){
-        RacingCars racingCars = inputCarNames();
-        Lab lab = inputLab();
-        return new RacingGame(racingCars, lab);
-    }
-
-    public void play(RacingGame racingGame){
-        view.playResult();
+    public RacingGame play(RacingCars racingCars, Lab lab){
+        RacingGame racingGame = new RacingGame(racingCars, lab);
+        playResult();
         while(racingGame.getLab().getLabCount() > 0){
             racingGame.startCars(moveStrategy);
-            view.finishOneLabResult(racingGame);
+            finishOneLabResult(racingGame);
         }
+        return racingGame;
     }
 
     public void getWinner(RacingGame racingGame){
         String winnerString = racingGame.getRacingCars().getWinner();
-        view.printWinner(winnerString);
+        printWinner(winnerString);
     }
-
-    private RacingCars inputCarNames() {
-        try{
-            RacingCars racingCars = new RacingCars(view.enterCarNames());
-            return racingCars;
-        }catch(InvalidCarNameException e){
-            view.printError(e.getMessage());
-            return inputCarNames();
-        }
-    }
-
-    private Lab inputLab() {
-        try {
-            Lab lab = new Lab(view.enterLab());
-            return lab;
-        } catch (InvalidCarNameException e) {
-            view.printError(e.getMessage());
-            return inputLab();
-        }
-    }
-
 }

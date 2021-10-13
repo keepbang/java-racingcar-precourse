@@ -15,23 +15,23 @@ public class ConsoleView {
     private static final String DASH = "-";
     private static final String FINAL_WINNER_TEXT = "최종 우승자는 %s 입니다.\n";
 
-    public ConsoleView(){}
+    private ConsoleView(){}
 
-    public String enterCarNames(){
+    public static String enterCarNames(){
         System.out.println(INPUT_CAR_TEXT);
         return Console.readLine();
     }
 
-    public String enterLab(){
+    public static String enterLab(){
         System.out.println(INPUT_LAB_TEXT);
         return Console.readLine();
     }
 
-    public void playResult(){
+    public static void playResult(){
         System.out.println(System.lineSeparator() + PLAY_RESULT);
     }
 
-    public void finishOneLabResult(RacingGame racingGame){
+    public static void finishOneLabResult(RacingGame racingGame){
         List<Car> cars = racingGame.getRacingCars().getCars();
         for (Car car : cars) {
             printLabResult(car);
@@ -39,11 +39,11 @@ public class ConsoleView {
         System.out.println();
     }
 
-    private void printLabResult(Car car){
+    private static void printLabResult(Car car){
         System.out.println(car.getCarName().getName() + " : " + printPositionDash(car.getCarPosition()));
     }
 
-    private String printPositionDash(Position carPosition){
+    private static String printPositionDash(Position carPosition){
         String positionDash = "";
         int position = carPosition.getPosition();
         for (int i = 0; i < position; i++) {
@@ -52,11 +52,11 @@ public class ConsoleView {
         return positionDash;
     }
 
-    public void printWinner(String winnerString){
+    public static void printWinner(String winnerString){
         System.out.printf(FINAL_WINNER_TEXT,winnerString);
     }
 
-    public void printError(String errorMessage){
+    public static void printError(String errorMessage){
         System.out.println("[ERROR] " + errorMessage);
     }
 }
