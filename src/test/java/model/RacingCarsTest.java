@@ -24,7 +24,7 @@ class RacingCarsTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "", "bang,,kim",",bang"
+            "", "bang,kimaaa",",bang"
     })
     @DisplayName("자동차 이름 입력 테스트 - 실패")
     void inputRacingCarNamesTest_fail(String inputNames){
