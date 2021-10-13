@@ -1,8 +1,5 @@
 package racinggame.model;
 
-import racinggame.model.Car;
-import racinggame.model.MoveStrategy;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
