@@ -1,4 +1,4 @@
-package model;
+package racinggame.model;
 
 public class Position {
     private int position;

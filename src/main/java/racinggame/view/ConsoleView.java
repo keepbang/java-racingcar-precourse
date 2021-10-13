@@ -1,8 +1,8 @@
-package view;
+package racinggame.view;
 
-import model.Car;
-import model.Position;
-import model.RacingGame;
+import racinggame.model.Car;
+import racinggame.model.Position;
+import racinggame.model.RacingGame;
 import nextstep.utils.Console;
 
 import java.util.List;

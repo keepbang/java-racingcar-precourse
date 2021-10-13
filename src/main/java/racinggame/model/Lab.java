@@ -1,6 +1,6 @@
-package model;
+package racinggame.model;
 
-import exception.InvalidLabException;
+import racinggame.exception.InvalidLabException;
 
 public class Lab {
     public static final String IS_NUMBER_REGEX = "[0-9]+";

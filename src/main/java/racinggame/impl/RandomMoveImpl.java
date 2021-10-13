@@ -1,6 +1,6 @@
-package impl;
+package racinggame.impl;
 
-import model.MoveStrategy;
+import racinggame.model.MoveStrategy;
 import util.RandomNumberGenerator;
 
 public class RandomMoveImpl implements MoveStrategy {

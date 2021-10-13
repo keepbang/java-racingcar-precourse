@@ -1,6 +1,6 @@
-package controller;
+package racinggame.controller;
 
-import model.RacingGame;
+import racinggame.model.RacingGame;
 
 public class RacingGameExecution {
 

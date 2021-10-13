@@ -1,13 +1,13 @@
-package controller;
+package racinggame.controller;
 
-import exception.InvalidCarNameException;
-import model.Lab;
-import model.MoveStrategy;
-import model.RacingCars;
-import model.RacingGame;
-import impl.RandomMoveImpl;
+import racinggame.exception.InvalidCarNameException;
+import racinggame.model.Lab;
+import racinggame.model.MoveStrategy;
+import racinggame.model.RacingCars;
+import racinggame.model.RacingGame;
+import racinggame.impl.RandomMoveImpl;
 
-import static view.ConsoleView.*;
+import static racinggame.view.ConsoleView.*;
 
 public class RacingGameController {
 

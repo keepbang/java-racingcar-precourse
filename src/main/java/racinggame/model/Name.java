@@ -1,6 +1,6 @@
-package model;
+package racinggame.model;
 
-import exception.InvalidCarNameException;
+import racinggame.exception.InvalidCarNameException;
 
 public class Name{
     public static final int NAME_MAX_LENGTH = 5;
